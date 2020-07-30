@@ -8,13 +8,11 @@
 
   <!-- Define a traditional camel context here -->
   <camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
-    <route id="simple-route">
-      <from id="route-timer" uri="timer:foo?period=2000"/>
-      <transform id="route-transform">
-        <method ref="myTransformer"/>
-      </transform>
-      <log id="route-log" message=">>> ${body}"/>
-    </route>
+    <route id="filereadRoute">
+            <from id="_from3" uri="file:/usr/share/data?fileName=csp.txt"/>
+            <log id="_log1" message="Body=> ${body}"/>
+            <to id="_to1" uri="file:/usr/share/data?fileName=report.txt"/>
+        </route>
   </camelContext>
 
 </beans>
